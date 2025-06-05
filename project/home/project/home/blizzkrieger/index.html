@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Hydroponic Fridge</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        background-color: #f0f0f0;
+      }
+      #canvas {
+        width: 100vw;
+        height: 100vh;
+        display: block;
+      }
+      #controls {
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        background: rgba(255, 255, 255, 0.85);
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        font-family: sans-serif;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        z-index: 10; /* Ensure controls are on top */
+      }
+      #controls label {
+        display: block;
+        margin-bottom: 5px;
+      }
+      #controls button,
+      #controls input,
+      #controls select {
+        padding: 8px 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      #controls input[type="range"] {
+        width: 150px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="controls">
+      <button id="toggleDoor">Open/Close Door</button>
+      <div>
+        <label for="scaleSlider">Fridge Scale:</label>
+        <input
+          type="range"
+          id="scaleSlider"
+          min="0.5"
+          max="2"
+          step="0.1"
+          value="1"
+        />
+      </div>
+      <!-- Removed Helix and Pod sliders -->
+    </div>
+    <canvas id="canvas"></canvas>
+
+    <!-- Added Import Map for Three.js -->
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+      }
+    </script>
+
+    <!-- Load GSAP directly -->
+    <script src="https://unpkg.com/gsap@3.12.4/dist/gsap.min.js"></script>
+
+    <!-- Ensure the path here matches the JS filename in your sandbox -->
+    <script type="module" src="main.js"></script>
+  </body>
+</html>
